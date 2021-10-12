@@ -29,7 +29,7 @@
 double dqawfe(dq_function_type f,double a,double omega,int sincos,
     double epsabs,int limlst,int maxp1,
     double *abserr,int *neval,int *ier,double rslst[],
-    double erlst[],int ierlst[],double **chebmo, void* user_data)
+    double erlst[],int ierlst[],double chebmo[MAXP1][25], void* user_data)
 {
     double abseps,correc,cycle,c1,c2,dl,drl;
     double ep,eps,epsa,errsum,fact,p1,psum[52],reseps;

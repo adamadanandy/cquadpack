@@ -8,7 +8,7 @@
 #define oflow     DBL_MAX
 #define epmach     DBL_EPSILON
 #define LIMIT     500
-#define MAXP1     21
+#define MAXP1     50
 #ifdef M_PI
 #define Pi      M_PI
 #else
@@ -84,14 +84,14 @@ CQUADPACK_EXPORT double dqwgts(double x, double a, double b, double alpha, doubl
 CQUADPACK_EXPORT void dqcheb(double *x, double *fval, double *cheb12, double *cheb24);
 CQUADPACK_EXPORT double dqc25o(dq_function_type f, double a, double b, double omega, int integr,
     int nrmom,int maxp1,int ksave,double *abserr,int *neval,
-    double *resabs,double *resasc,int *momcom,double **chebmo, void* user_data);
+    double *resabs,double *resasc,int *momcom,double chebmo[MAXP1][25], void* user_data);
 CQUADPACK_EXPORT double dqfour(dq_function_type f, double a, double b, double omega, int integr,
     double epsabs,double epsrel,int icall,int maxp1,
     double *abserr,int *neval,int *ier,int *momcom,
-    double **chebmo, void* user_data);
+    double chebmo[MAXP1][25], void* user_data);
 CQUADPACK_EXPORT double dqawfe(dq_function_type f, double a, double omega, int integr, double epsabs,
     int limlst,int maxp1,double *abserr,int *neval,int *ier,
-    double *rslst,double *erlist,int *ierlst,double **chebmo, void* user_data);
+    double *rslst,double *erlist,int *ierlst,double chebmo[MAXP1][25], void* user_data);
 CQUADPACK_EXPORT double dqawf(dq_function_type f, double a, double omega, int integr, double epsabs,
     double *abserr,int *neval,int *ier, void* user_data);
 CQUADPACK_EXPORT double dqawo(dq_function_type f, double a, double b, double omega, int integr, double epsabs,

@@ -34,7 +34,7 @@ double dqfour(dq_function_type f,double a,double b,double omega,
     int sincos,double epsabs,double epsrel,
     int icall,int maxp1,double *abserr,
     int *neval,int *ier,
-    int *momcom,double **chebmo, void* user_data)
+    int *momcom,double chebmo[MAXP1][25], void* user_data)
 {
     double abseps,area,area1,area12,area2;
     double a1,a2,b1,b2,correc,defabs,defab1;
@@ -157,7 +157,7 @@ _25:
         if (((iroff1 + iroff2) >= 10) || (iroff3 >= 20))
             *ier = 2;
         if (iroff2 >= 5)
-            *ier = 3;
+            ierro = 3;
 
 /* Set error flag in the case that the number of subintervals
     equals limit. */
@@ -166,7 +166,7 @@ _25:
 
 /* Set error flag in the case of bad integrand behavior at some
     points in the integration range. */
-        if (max(fabs(a1),fabs(b2)) <= (1.0 +1000.0 * epmach) *
+        if (max(fabs(a1),fabs(b2)) <= (1.0 +100.0 * epmach) *
             (fabs(a2) + 1000.0*uflow))
             *ier = 4;
 
@@ -295,7 +295,7 @@ _160:
 
 /* Test on divergence. */
 _165:
-    if ((ksgn == -1) && (max(fabs(result),fabs(area)) <= defabs * .01))
+    if ((ksgn == -1) && (max(fabs(result),fabs(area)) <= defabs * 0.01))
         goto _190;
     if ((0.01 > result/area) || (result/area > 100.0) ||
         (errsum > fabs(area))) *ier = 6;

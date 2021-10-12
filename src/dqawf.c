@@ -27,22 +27,22 @@
 double dqawf(dq_function_type f,double a,double omega,int sincos,
     double epsabs,double *abserr,int *neval,int *ier, void* user_data)
 {
-    double **chebmo,erlst[50];
+    double chebmo[MAXP1][25],erlst[50];
     double result,rslst[50];
 
     int ierlst[50],i;
     int limlst;
 
-    if ((chebmo = (double **)calloc(MAXP1,sizeof(double *))) == NULL) {
-        fprintf(stderr,"Out of memory in dqawf!\n");
-        exit(1);
-    }
-    for (i = 0;i < MAXP1; i++) {
-        if ((chebmo[i] = (double *)calloc(25,sizeof(double))) == NULL) {
-            fprintf(stderr,"Out of memory in dqawf!\n");
-            exit(1);
-        }
-    }
+    // if ((chebmo = (double **)calloc(MAXP1,sizeof(double *))) == NULL) {
+    //     fprintf(stderr,"Out of memory in dqawf!\n");
+    //     exit(1);
+    // }
+    // for (i = 0;i < MAXP1; i++) {
+    //     if ((chebmo[i] = (double *)calloc(25,sizeof(double))) == NULL) {
+    //         fprintf(stderr,"Out of memory in dqawf!\n");
+    //         exit(1);
+    //     }
+    // }
     *ier = 6;
     *neval = 0;
     result = 0.0;
@@ -62,8 +62,8 @@ double dqawf(dq_function_type f,double a,double omega,int sincos,
     result=dqawfe(f,a,omega,sincos,epsabs,limlst,MAXP1,
         abserr,neval,ier,rslst,erlst,ierlst,chebmo, user_data);
 _10:
-    for (i = 0; i < MAXP1; i++)
-        free(chebmo[i]);
-    free(chebmo);
+    // for (i = 0; i < MAXP1; i++)
+    //     free(chebmo[i]);
+    // free(chebmo);
     return result;
 }
