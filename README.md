@@ -1,8 +1,6 @@
 # CQUADPACK
 
-[![Build Status](https://travis-ci.org/ESSS/cquadpack.svg?branch=master)](https://travis-ci.org/ESSS/cquadpack)
-
-This package includes a complete port of the *QUADPACK* Fortran codes to C.
+This package includes the *QUADPACK* Fortran codes rewritten in C.
 Unlike ports created by translators, this port reimplements the algorithms
 to take advantage of C progralm structure and dynamic memory. Every effort
 has been made to leave the low level code intact, except where some
@@ -18,32 +16,13 @@ QUADPACK is well documented in the publication, ``QUADPACK, A Subroutine
 Package for Automatic Integration,'' by R. Piessens, et al., Springer-Verlag,
 1980.
 
-This port was initially done by C. Bond (http://www.crbond.com/) and this is
-a repackaging of the initial code with some minor changes.
+This port was initially done by ESSS/cquadpack, and C. Bond (http://www.crbond.com/)
+This version of CQUADPACK is a perfectly replica of the QUADPACK with modifications
+based on ESSS/cquadpack, which allows the workspace restored only in stack.
 
 ## DEPENDENCIES
 
-The code has no external dependency. It only depends on the standard C library.
-
-## INSTALLATION
-
-`conda install -c https://conda.anaconda.org/edisongustavo cquadpack`
-
-## BUILDING
-
-[CMake](http://www.cmake.org/) is required.
-
-It is recommended to use [out-of-source builds](http://www.cmake.org/Wiki/CMake_FAQ#Out-of-source_build_trees) builds.
-For that, create the **build** directory and run CMake on it:
-
-    mkdir build
-    cd build
-    cmake ..
-
-### Visual Studio
-
-Open the Visual Studio command prompt and run the above commands. A solution *cquadpack.sln* will be generated, open it
-with Visual Studio and compile it.
+dqc25o.c : LAPACK: dgtsv
 
 ## FILES
 
@@ -58,20 +37,6 @@ The complete set of source and header files are in the directory: **src/**.
 
 If you have access to the QUADPACK documentation, you will be able to
 match files in this directory to the original FORTRAN files.
-
-### TEST PROGRAMS
-
-Some test programs which exercise most of the *CQUADPACK* routines are
-included. They are in the directore: **test/**.
-
-If you plan to use *CQUADPACK* for more than one application, it would be
-better to compile all the source files into a library, and just add the
-library to your project.
-
-### MISCELLANEOUS APPLICATIONS
-
-These include a programs to compute elliptic integrals and demonstrate
-double integrals.
 
 ## CAVEATS
 
